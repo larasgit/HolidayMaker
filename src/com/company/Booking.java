@@ -46,7 +46,7 @@ public class Booking {
     }
 
     public void searchBookings(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        System.out.println("PLEASE TYPE IN FOLLOWING INFORMATION TO FIND YOUR RESERVATION:");
+       System.out.println("PLEASE TYPE IN FOLLOWING INFORMATION TO FIND YOUR RESERVATION:");
         String customerFirstName = Dialog.dialogString("Please write the Customer's first name: ");
         String customerLastName = Dialog.dialogString("Please write the Customer's last name: ");
         try {
@@ -56,12 +56,18 @@ public class Booking {
             resultSet = statement.executeQuery();
             System.out.println("Following customer(s) where found: ");
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+            boolean searchCustomer = false;
             while (resultSet.next()) {
                 String query = ("First name: " + customerFirstName +
                         "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date") +
                          "\nCredit card Type: "+ resultSet.getString("Creditcard_Type") +
                         "\nCustomer ID: " + resultSet.getString("Customer_Id"));
                 System.out.println(query);
+                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+                searchCustomer = true;
+            }
+            if (!searchCustomer){
+                System.out.println("The customer you searched for could not be found.");
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
         }
@@ -75,23 +81,25 @@ public class Booking {
 
                 System.out.println("Following reservations where found: ");
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+                boolean searchBooking = false;
                 while (resultSet.next()) {
                     String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
                             "\nCheck in date: " + resultSet.getString("Start_Date") +
                             "\nCheck out date: " + resultSet.getString("End_Date") +
                             "\nHotel room: " + resultSet.getInt("Hotel_Rooms_Id") +
                             "\nHotel name: " + resultSet.getString("Hotel_Name") +
-                            "\nCity: " + resultSet.getString("City") +
-                            "\nReview: " + resultSet.getInt("Review")
+                            "\nCity: " + resultSet.getString("City")
                             + "\nCustomer first name: " + resultSet.getString("First_Name")
                             + "\nCustomer last name: " + resultSet.getString("Last_Name")+
-                            "\nCustomer ID: " + resultSet.getInt("Customer_Id") +
-                            "\nCompany ID: " + resultSet.getInt("Company_Id")
-                            + "\nBed type: " + resultSet.getString("Bed_Name")
-                            + "\nExtra: " + resultSet.getString("Extras_Alt"));
+                            "\nCustomer ID: " + resultSet.getInt("Customer_Id"));
                     System.out.println(query);
                     System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+                    searchBooking = true;
                 }
+        if (!searchBooking){
+            System.out.println("The reservation you searched for could not be found.");
+            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+        }
             }
 
     public void availableRooms(PreparedStatement statement, Connection connect, ResultSet resultSet){
@@ -134,8 +142,7 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nReview: "+ resultSet.getString("Review")
-                        +"\nCustomer first name: "+ resultSet.getString("First_Name")
+                        "\nCustomer first name: "+ resultSet.getString("First_Name")
                         +"\nCustomer last name: "+ resultSet.getString("Last_Name")+
                         "\nCustomer ID: " + resultSet.getInt("Customer_Id"));
                 System.out.println(query);
@@ -274,7 +281,7 @@ public class Booking {
 
     public void addOrEditFullBoard(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
-        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+        int extrasId = 1;
 
         statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
         statement.setInt(1, extrasId);
@@ -285,7 +292,7 @@ public class Booking {
 
     public void addOrEditHalfBoard(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
-        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+        int extrasId = 2;
 
         statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
         statement.setInt(1, extrasId);
@@ -296,7 +303,7 @@ public class Booking {
 
     public void addOrEditExtraBed(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
-        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+        int extrasId = 3;
 
         statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
         statement.setInt(1, extrasId);
@@ -307,7 +314,7 @@ public class Booking {
 
     public void addOrEditNone(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
-        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+        int extrasId = 4;
 
         statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
         statement.setInt(1, extrasId);

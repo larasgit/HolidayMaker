@@ -46,12 +46,18 @@ public class Company {
             resultSet = statement.executeQuery();
             System.out.println("Following company where found: ");
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+            boolean findCompany = false;
             while(resultSet.next()){
                 String query = "First name: " + (resultSet.getString("First_Name") + "\nLast name: "
                         + resultSet.getString("Last_Name") + "\nCompany ID: " + resultSet.getString("Company_Id") +
                         "\nBirth year: " + resultSet.getString("Birth_Date") +
                         "\nCustomer ID: "+ resultSet.getString("Customer_Id"));
                 System.out.println(query);
+                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+                findCompany = true;
+            }
+            if (!findCompany){
+                System.out.println("The company you searched for could not be found.");
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
         }

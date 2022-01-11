@@ -127,11 +127,18 @@ public class Customer {
             resultSet = statement.executeQuery();
             System.out.println("Following customer(s) where found: ");
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+            boolean searchCustomer = false;
             while(resultSet.next()){
+
             String query = ("First name: " + customerFirstName +
                         "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date")+ ", " + resultSet.getString("Creditcard_Type") +
                     "\nCustomer ID: " + resultSet.getString("Customer_Id"));
             System.out.println(query);
+                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+                searchCustomer = true;
+            }
+            if (!searchCustomer){
+                System.out.println("The customer you searched for could not be found.");
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
         }
