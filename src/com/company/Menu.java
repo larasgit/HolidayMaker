@@ -60,21 +60,21 @@ public class Menu {
 
 
     public void customerMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        System.out.println("       ┌──────────    ───────────┐\n" +
-                "              CUSTOMER MENU \n" +
+        System.out.println("       ┌──────────    ───────────┐" +
+                "\n              CUSTOMER MENU " +
 
-                "       └──────────    ───────────┘");
+                "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
 
         System.out.println("╔══════════════════════════════════════════╗"+
-                "\n (1)  Register customer." +
-                "\n (2)  Update customer information.  " +
-                "\n (3)  Update company information.  " +
-                "\n (4)  Add Company. " +
-                "\n (5)  Remove customer." +
-                "\n (6)  Remove company.   " +
-                "\n (7)  Search for a customer.  " +
-                "\n (8)  Search for company.  " +
+                "\n (1) Register customer." +
+                "\n (2) Update customer information.  " +
+                "\n (3) Update company information.  " +
+                "\n (4) Add Company. " +
+                "\n (5) Remove customer." +
+                "\n (6) Remove company.   " +
+                "\n (7) Search for a customer.  " +
+                "\n (8) Search for company.  " +
                 "\n (9) Back to main menu. " +
                 "\n╚══════════════════════════════════════════╝");
         customerMenuChoice(statement, connect, resultSet);
@@ -188,10 +188,19 @@ public class Menu {
     }
 
     public void bookingMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        System.out.println("Booking menu:");
+        System.out.println("       ┌──────────    ───────────┐" +
+                "\n              BOOKING MENU " +
 
-        System.out.println("(1) Make a reservation. (2) Edit reservation." +
-                "\n (3)  Remove reservation. (4)  Search for reservation. (5) Back to main menu.  ");
+                "\n       └──────────    ───────────┘");
+        System.out.println("         PLEASE SELECT AN OPTION");
+
+        System.out.println("╔══════════════════════════════════════════╗" +
+                "\n(1) Make a reservation. " +
+                "\n(2) Edit reservation." +
+                "\n(3) Remove reservation. " +
+                "\n(4) Search for reservation. " +
+                "\n(5) Back to main menu.  "+
+                "\n╚══════════════════════════════════════════╝");
         bookingMenuChoice(statement,connect,resultSet);
     }
 
@@ -261,6 +270,11 @@ public class Menu {
 
     public void newCustomerReservationMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         System.out.println("Reservation menu:");
+        System.out.println("       ┌──────────    ───────────┐" +
+                "\n              RESERVATION MENU " +
+
+                "\n       └──────────    ───────────┘");
+        System.out.println("         PLEASE SELECT AN OPTION");
 
         System.out.println("(1) Make a reservation." +
                 "\n(2) Make reservation in a specific city. " +
@@ -449,6 +463,11 @@ public class Menu {
     }
 
     public void cityMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+        System.out.println("       ┌──────────    ───────────┐" +
+                "\n              CITY RESERVATION MENU " +
+
+                "\n       └──────────    ───────────┘");
+        System.out.println("         PLEASE SELECT AN OPTION");
         System.out.println("(1) Make reservation in Gothenburg. " +
                 "\n(2) Make Reservation in Stockholm. " +
                 "\n(3) Make Reservation in Luleå. " +
@@ -608,8 +627,11 @@ public class Menu {
     }
 
     public void existingCustomerMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        System.out.println("Reservation menu:");
+        System.out.println("       ┌──────────    ───────────┐" +
+                "\n              RESERVATION MENU " +
 
+                "\n       └──────────    ───────────┘");
+        System.out.println("         PLEASE SELECT AN OPTION");
         System.out.println("(1) Make a reservation." +
                 "\n(2) Make reservation in a specific city. " +
                 "\n(3) Make a reservation based on reviews." +
@@ -796,6 +818,11 @@ public class Menu {
     }
 
     public void cityMenu2(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+        System.out.println("       ┌──────────    ───────────┐" +
+                "\n              CITY RESERVATION MENU " +
+
+                "\n       └──────────    ───────────┘");
+        System.out.println("         PLEASE SELECT AN OPTION");
         System.out.println("(1) Make reservation in Gothenburg. " +
                 "\n(2) Make Reservation in Stockholm. " +
                 "\n(3) Make Reservation in Luleå. " +

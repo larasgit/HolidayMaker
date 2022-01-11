@@ -107,7 +107,7 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                                "\nRoom price: "+ resultSet.getString("Bed_Price")+
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")+
                         "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
@@ -186,8 +186,7 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price")
-                        +
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")+
                         "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
@@ -237,8 +236,7 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price")
-                        +
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")+
                         "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
@@ -262,8 +260,8 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price")
-                        + "\nBed type: "+ resultSet.getString("Bed_Name"));
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")+
+                        "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }

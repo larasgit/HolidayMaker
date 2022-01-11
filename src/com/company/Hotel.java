@@ -31,10 +31,15 @@ public class Hotel {
         resultSet = statement.executeQuery();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         while (resultSet.next()) {
-            String query =
-                    "Hotel name: " + " " + resultSet.getString("Hotel_Name") +
-                            "\nHotel City: " + " " + resultSet.getString("City")+
-                            "\nDistance City: " + " " + resultSet.getString("Distance_City");
+            String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
+                    "\nCheck in date: " + resultSet.getString("Start_Date") +
+                    "\nCheck out date: " + resultSet.getString("End_Date") +
+                    "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
+                    "\nHotel name: "+ resultSet.getString("Hotel_Name") +
+                    "\nCity: "+ resultSet.getString("City")+
+                    "\nRoom price: "+ resultSet.getString("Bed_Price")+
+                    "\nBed type: "+ resultSet.getString("Bed_Name")+
+                    "\nDistance to city: "+ resultSet.getString("Distance_City"));
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             //KOLLA ÖVER KOLUMNER
@@ -47,10 +52,15 @@ public class Hotel {
         resultSet = statement.executeQuery();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         while (resultSet.next()) {
-            String query =
-                    "Hotel name: " + " " + resultSet.getString("Hotel_Name") +
-                            "\nHotel City: " + " " + resultSet.getString("City")+
-                            "\nDistance City: " + " " + resultSet.getString("Distance_Beach");
+                    String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
+                    "\nCheck in date: " + resultSet.getString("Start_Date") +
+                    "\nCheck out date: " + resultSet.getString("End_Date") +
+                    "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
+                    "\nHotel name: "+ resultSet.getString("Hotel_Name") +
+                    "\nCity: "+ resultSet.getString("City")+
+                    "\nRoom price: "+ resultSet.getString("Bed_Price")+
+                    "\nBed type: "+ resultSet.getString("Bed_Name")+
+                    "\nDistance to beach: "+ resultSet.getString("Distance_Beach"));
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             //KOLLA ÖVER KOLUMNER
@@ -63,10 +73,15 @@ public class Hotel {
         resultSet = statement.executeQuery();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         while (resultSet.next()) {
-            String query =
-                    "Hotel name: " + " " + resultSet.getString("Hotel_Name") +
-                            "\nHotel City: " + " " + resultSet.getString("City")+
-                             "\nReviews: " + " " + resultSet.getString("Review");
+            String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
+                    "\nCheck in date: " + resultSet.getString("Start_Date") +
+                    "\nCheck out date: " + resultSet.getString("End_Date") +
+                    "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
+                    "\nHotel name: "+ resultSet.getString("Hotel_Name") +
+                    "\nCity: "+ resultSet.getString("City")+
+                    "\nRoom price: "+ resultSet.getString("Bed_Price")+
+                    "\nBed type: "+ resultSet.getString("Bed_Name")+
+                    "\nDistance to city: "+ resultSet.getString("Distance_Review"));
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             //KOLLA ÖVER KOLUMNER
@@ -79,16 +94,14 @@ public class Hotel {
         resultSet = statement.executeQuery();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         while (resultSet.next()) {
-            String query =
-                     "Booking ID: " + (resultSet.getInt("Booking_Id") +
+                    String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
                     "\nCheck in date: " + resultSet.getString("Start_Date") +
                     "\nCheck out date: " + resultSet.getString("End_Date") +
                     "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                     "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                     "\nCity: "+ resultSet.getString("City")+
-                             "\nBed type: "+ resultSet.getString("Bed_Name")+
-                    "\nRoom price: "+ resultSet.getString("Bed_Price")
-                    );//KOLLA ÖVER KOLUMNER
+                    "\nBed type: "+ resultSet.getString("Bed_Name")+
+                            "\nRoom price: "+ resultSet.getString("Bed_Price"));
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         }
@@ -100,23 +113,25 @@ public class Hotel {
         resultSet = statement.executeQuery();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         while (resultSet.next()) {
-            String query =
-                    "Booking ID: " + (resultSet.getInt("Booking_Id") +
-                            "\nCheck in date: " + resultSet.getString("Start_Date") +
-                            "\nCheck out date: " + resultSet.getString("End_Date") +
-                            "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
-                            "\nHotel name: "+ resultSet.getString("Hotel_Name") +
-                            "\nCity: "+ resultSet.getString("City")+
-                            "\nBed type: "+ resultSet.getString("Bed_Name")+
-                            "\nRoom price: "+ resultSet.getString("Bed_Price")
-                            //KOLLA ÖVER KOLUMNER
-                    );
-            System.out.println(query);
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+            while (resultSet.next()) {
+                String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
+                        "\nCheck in date: " + resultSet.getString("Start_Date") +
+                        "\nCheck out date: " + resultSet.getString("End_Date") +
+                        "\nHotel room: " + resultSet.getInt("Hotel_Rooms_Id") +
+                        "\nHotel name: " + resultSet.getString("Hotel_Name") +
+                        "\nCity: " + resultSet.getString("City") +
+                        "\nBed type: " + resultSet.getString("Bed_Name") +
+                        "\nRoom price: " + resultSet.getString("Bed_Price") +
+                        "\nHas pool: " + resultSet.getString("Pool") +
+                        "\nHas restaurant: " + resultSet.getString("Restaurant") +
+                        "\nHas evening entertainment: " + resultSet.getString("Evening_Entertainment") +
+                        "\nHas kids-club: " + resultSet.getString("Kids_Club"));
+                System.out.println(query);
+                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
+            }
+
         }
 
+
     }
-
-
-
 }
