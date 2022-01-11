@@ -21,7 +21,6 @@ public class Hotel {
                             "\nHas kids Club: " + " " + resultSet.getString("Kids_Club");
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            //KOLLA ÖVER KOLUMNER
         }
 
     }
@@ -63,7 +62,6 @@ public class Hotel {
                     "\nDistance to beach: "+ resultSet.getString("Distance_Beach"));
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            //KOLLA ÖVER KOLUMNER
         }
 
     }
@@ -81,10 +79,10 @@ public class Hotel {
                     "\nCity: "+ resultSet.getString("City")+
                     "\nRoom price: "+ resultSet.getString("Bed_Price")+
                     "\nBed type: "+ resultSet.getString("Bed_Name")+
-                    "\nDistance to city: "+ resultSet.getString("Distance_Review"));
+                    "\nRating: "+ resultSet.getString("Review"));
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            //KOLLA ÖVER KOLUMNER
+
         }
 
     }

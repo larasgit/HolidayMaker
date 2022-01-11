@@ -232,24 +232,28 @@ public class Menu {
                 if (choice4 == 1) {
                     booking.editBooking(statement, connect, resultSet);
                     int choice5 = Dialog.dialog("Please select one of the following extras:" +
-                            "(1) Full board: Breakfast, lunch and dinner. (1000kr)" +
+                            "(1)\nFull board: Breakfast, lunch and dinner. (1000kr)" +
                             "\n(2) Half board: Breakfast and lunch. (750kr)" +
                             "\n(3) Extra bed: (150kr)." +
                             "\n(4) None. ", 1, 4);
                     if (choice5 == 1) {
                         booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was updated successfully.");
                         bookingMenu(statement, connect, resultSet);
                     }
                     if (choice5 == 2) {
                         booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was updated successfully.");
                         bookingMenu(statement, connect, resultSet);
                     }
                     if (choice5 == 3) {
                         booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was updated successfully.");
                         bookingMenu(statement, connect, resultSet);
                     }
                     if (choice5 == 4) {
                         booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was updated successfully.");
                         bookingMenu(statement, connect, resultSet);
                     }
                 }
@@ -263,7 +267,7 @@ public class Menu {
 
             case "3":
                 System.out.println("YOU CHOSE TO REMOVE A RESERVATION");
-                booking.allBookedRooms(statement, connect, resultSet);
+                booking.searchBookings(statement, connect, resultSet);
                 booking.removeBooking(statement, connect, resultSet);
                 System.out.println("Reservation deleted successfully.");
                 bookingMenu(statement, connect, resultSet); // gå tillbaka till booking menu
@@ -951,7 +955,7 @@ public class Menu {
                 "\n(4)  Make Reservation in Malmö. " +
                 "\n(5)  Make Reservation in Skövde. " +
                 "\n(6)  Go back to reservation menu. " +
-                "╚══════════════════════════════════════════╝");
+                "\n╚══════════════════════════════════════════╝");
         cityMenuChoice2(statement, connect, resultSet);
     }
 

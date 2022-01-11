@@ -67,7 +67,7 @@ public class Company {
 
     }
 
-    public void viewAllCompany(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+    /*public void viewAllCompany(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         statement = connect.prepareStatement("SELECT * FROM Company");
         resultSet = statement.executeQuery();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
@@ -80,7 +80,7 @@ public class Company {
             System.out.println(query);
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         }
-    }
+    }*/
 
     public void editCompanyInformation(PreparedStatement statement, Connection connect, ResultSet resultSet){
         int companyId = Dialog.dialog("Please select a company ID: ");
@@ -109,7 +109,7 @@ public class Company {
 
     }
 
-    public void removeCompany(PreparedStatement statement, Connection connect, ResultSet resultSet){
+    /*public void removeCompany(PreparedStatement statement, Connection connect, ResultSet resultSet){
 
         int companyAmount = Dialog.dialog("How many companies would you like to remove ?");
 
@@ -125,7 +125,7 @@ public class Company {
             }
         }
 
-    }
+    }*/
 
 
 }
