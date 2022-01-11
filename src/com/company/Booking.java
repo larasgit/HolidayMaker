@@ -69,7 +69,7 @@ public class Booking {
             ex.printStackTrace();
         }
                 int customerId = Dialog.dialog("Please select a customer ID: ");
-                statement = connect.prepareStatement("SELECT * FROM BookedRooms WHERE Customer_Id = ?");
+                statement = connect.prepareStatement("SELECT * FROM ViewBookings WHERE Customer_Id = ?");
                 statement.setInt(1, customerId);
                 resultSet = statement.executeQuery();
 
@@ -123,7 +123,7 @@ public class Booking {
 
     public void allBookedRooms(PreparedStatement statement, Connection connect, ResultSet resultSet){
         try {
-            statement = connect.prepareStatement("SELECT * FROM BookedRooms ");
+            statement = connect.prepareStatement("SELECT * FROM ViewBookings ");
             resultSet = statement.executeQuery();
             System.out.println("Following rooms where found: ");
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");

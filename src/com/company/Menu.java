@@ -222,7 +222,7 @@ public class Menu {
                 break;
             case "2":
                 System.out.println("YOU CHOSE TO EDIT A RESERVATION.");
-                booking.searchBookings(statement,connect,resultSet);
+                booking.allBookedRooms(statement,connect,resultSet);
                 booking.editBooking(statement,connect,resultSet);
                 int choice1 = Dialog.dialog("Please select one of the following additions:" +
                         "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
@@ -248,7 +248,7 @@ public class Menu {
 
             case "3":
                 System.out.println("YOU CHOSE TO REMOVE A RESERVATION");
-                booking.searchBookings(statement,connect,resultSet);
+                booking.allBookedRooms(statement,connect,resultSet);
                 booking.removeBooking(statement,connect,resultSet);
                 System.out.println("Reservation deleted successfully.");
                 bookingMenu(statement, connect, resultSet); // gå tillbaka till booking menu
@@ -276,14 +276,16 @@ public class Menu {
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
 
-        System.out.println("(1) Make a reservation." +
+        System.out.println("╔══════════════════════════════════════════╗" +
+                "\n(1) View all empty rooms." +
                 "\n(2) Make reservation in a specific city. " +
                 "\n(3) Make a reservation based on reviews." +
                 "\n(4) Make a reservation based on price." +
                 "\n(5) Make a reservation based on distance to the city. " +
                 "\n(6) Make a reservation based on distance to the beach. " +
                 "\n(7) Make a reservation based on hotel activities. " +
-                "\n(8) Back to booking menu.");
+                "\n(8) Back to booking menu."+
+                "\n╚══════════════════════════════════════════╝");
         newCostumerChoice(statement,connect,resultSet);
     }
 
@@ -468,12 +470,14 @@ public class Menu {
 
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
-        System.out.println("(1) Make reservation in Gothenburg. " +
+        System.out.println("╔══════════════════════════════════════════╗" +
+                " (1) Make reservation in Gothenburg. " +
                 "\n(2) Make Reservation in Stockholm. " +
                 "\n(3) Make Reservation in Luleå. " +
                 "\n(4)  Make Reservation in Malmö. " +
                 "\n(5)  Make Reservation in Skövde. " +
-                "\n(6)  Go back to reservation menu. ");
+                "\n(6)  Go back to reservation menu. "+
+                "\n╚══════════════════════════════════════════╝");
         cityMenuChoice(statement,connect,resultSet);
     }
 
@@ -632,14 +636,16 @@ public class Menu {
 
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
-        System.out.println("(1) Make a reservation." +
+        System.out.println("╔══════════════════════════════════════════╗" +
+                "\n(1) Make a reservation." +
                 "\n(2) Make reservation in a specific city. " +
                 "\n(3) Make a reservation based on reviews." +
                 "\n(4) Make a reservation based on price." +
                 "\n(5) Make a reservation based on distance to the city. " +
                 "\n(6) Make a reservation based on distance to the beach. " +
                 "\n(7) Make a reservation based on hotel activities. " +
-                "\n(8) Back to booking menu.");
+                "\n(8) Back to booking menu." +
+                "╚══════════════════════════════════════════╝");
         existingMenuChoice(statement,connect,resultSet);
     }
     public void existingMenuChoice(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
@@ -823,12 +829,14 @@ public class Menu {
 
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
-        System.out.println("(1) Make reservation in Gothenburg. " +
+        System.out.println("╔══════════════════════════════════════════╗" +
+                "\n(1) Make reservation in Gothenburg. " +
                 "\n(2) Make Reservation in Stockholm. " +
                 "\n(3) Make Reservation in Luleå. " +
                 "\n(4)  Make Reservation in Malmö. " +
                 "\n(5)  Make Reservation in Skövde. " +
-                "\n(6)  Go back to reservation menu. ");
+                "\n(6)  Go back to reservation menu. "+
+                "╚══════════════════════════════════════════╝");
         cityMenuChoice2(statement,connect,resultSet);
     }
 

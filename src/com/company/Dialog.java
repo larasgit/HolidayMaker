@@ -1,6 +1,5 @@
 package com.company;
 import java.util.Scanner;
-import java.io.Serializable;
 
 public class Dialog {
     private static Scanner console = new Scanner(System.in);
