@@ -5,9 +5,6 @@ import java.sql.ResultSet;
 import java.sql.*;
 
 public class Booking {
-    int bookingId,customerId,hotelRoomsId;
-    String startDate, endDate;
-
 
     public void createBooking(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         int bookingId = Dialog.dialog("Please type in your booking ID: ");
@@ -48,35 +45,8 @@ public class Booking {
 
     }
 
-    public void availableRoomsActivities(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        try {
-            statement = connect.prepareStatement("SELECT * FROM AvailableRoomsWithExtras");
-            resultSet = statement.executeQuery();
-            System.out.println("Following rooms where found: ");
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            while(resultSet.next()){
-                String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
-                        "\nCheck in date: " + resultSet.getString("Start_Date") +
-                        "\nCheck out date: " + resultSet.getString("End_Date") +
-                        "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
-                        "\nHotel name: "+ resultSet.getString("Hotel_Name") +
-                        "\nCity: "+ resultSet.getString("City")+
-                        "\nEvening entertainment: "+ resultSet.getBoolean("Evening_Entertainment")+
-                        "\nKids Club: "+ resultSet.getBoolean("Kids_Club")+
-                        "\nPool: "+ resultSet.getBoolean("Pool")+
-                        "\nRestaurant: "+ resultSet.getBoolean("Restaurant"));
-                System.out.println(query);
-                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            }
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
-
-    public void searchBookingsPt1(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+    public void searchBookings(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+        System.out.println("PLEASE TYPE IN FOLLOWING INFORMATION TO FIND YOUR RESERVATION:");
         String customerFirstName = Dialog.dialogString("Please write the Customer's first name: ");
         String customerLastName = Dialog.dialogString("Please write the Customer's last name: ");
         try {
@@ -88,8 +58,8 @@ public class Booking {
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             while (resultSet.next()) {
                 String query = ("First name: " + customerFirstName +
-                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date") + "\nCredit card: "
-                        + resultSet.getString("Creditcard") + ", " + resultSet.getString("Creditcard_Type") +
+                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date") +
+                         "\nCredit card Type: "+ resultSet.getString("Creditcard_Type") +
                         "\nCustomer ID: " + resultSet.getString("Customer_Id"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
@@ -98,10 +68,6 @@ public class Booking {
         catch (Exception ex) {
             ex.printStackTrace();
         }
-            }
-
-            public void searchBookingsPt2(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-
                 int customerId = Dialog.dialog("Please select a customer ID: ");
                 statement = connect.prepareStatement("SELECT * FROM BookedRooms WHERE Customer_Id = ?");
                 statement.setInt(1, customerId);
@@ -120,15 +86,17 @@ public class Booking {
                             + "\nCustomer first name: " + resultSet.getString("First_Name")
                             + "\nCustomer last name: " + resultSet.getString("Last_Name")+
                             "\nCustomer ID: " + resultSet.getInt("Customer_Id") +
-                            "\nCompany ID: " + resultSet.getInt("Company_Id"));
+                            "\nCompany ID: " + resultSet.getInt("Company_Id")
+                            + "\nBed type: " + resultSet.getString("Bed_Name")
+                            + "\nExtra: " + resultSet.getString("Extras_Alt"));
                     System.out.println(query);
                     System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
                 }
             }
 
-    public void availableRoomsFullboard(PreparedStatement statement, Connection connect, ResultSet resultSet){
+    public void availableRooms(PreparedStatement statement, Connection connect, ResultSet resultSet){
         try {
-            statement = connect.prepareStatement("SELECT * FROM EmptyRoomsFullBoard ");
+            statement = connect.prepareStatement("SELECT * FROM EmptyRooms ");
             resultSet = statement.executeQuery();
             System.out.println("Following rooms where found: ");
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
@@ -140,8 +108,7 @@ public class Booking {
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
                                 "\nRoom price: "+ resultSet.getString("Bed_Price")+
-                        "\nAlternative: "+ resultSet.getString("Extras_Alt")+
-                        "\nExtra Price: "+ resultSet.getInt("Extra_Price"));
+                        "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
@@ -152,83 +119,7 @@ public class Booking {
 
     }
 
-    public void availableRoomsHalfBoard(PreparedStatement statement, Connection connect, ResultSet resultSet){
-        try {
-            statement = connect.prepareStatement("SELECT * FROM EmptyRoomsHalfBoard ");
-            resultSet = statement.executeQuery();
-            System.out.println("Following rooms where found: ");
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            while(resultSet.next()){
-                String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
-                        "\nCheck in date: " + resultSet.getString("Start_Date") +
-                        "\nCheck out date: " + resultSet.getString("End_Date") +
-                        "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
-                        "\nHotel name: "+ resultSet.getString("Hotel_Name") +
-                        "\nCity: "+ resultSet.getString("City")+
-                                "\nRoom price: "+ resultSet.getString("Bed_Price")+
-                        "\nAlternative: "+ resultSet.getString("Extras_Alt")
-                +"\nExtras price: "+ resultSet.getInt("Extra_Price"));
-                System.out.println(query);
-                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            }
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
 
-    }
-
-    public void availableRoomsExtraBed(PreparedStatement statement, Connection connect, ResultSet resultSet){
-        try {
-            statement = connect.prepareStatement("SELECT * FROM EmptyRoomsExtraBed ");
-            resultSet = statement.executeQuery();
-            System.out.println("Following rooms where found: ");
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            while(resultSet.next()){
-                String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
-                        "\nCheck in date: " + resultSet.getString("Start_Date") +
-                        "\nCheck out date: " + resultSet.getString("End_Date") +
-                        "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
-                        "\nHotel name: "+ resultSet.getString("Hotel_Name") +
-                        "\nCity: "+ resultSet.getString("City")
-                        +
-                        "\nRoom price: "+ resultSet.getString("Bed_Price")+
-                        "\nAlternative: "+ resultSet.getString("Extras_Alt")
-                        +"\nExtra Price: "+ resultSet.getInt("Extra_Price"));
-                System.out.println(query);
-                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            }
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
-    public void allAvailableRooms(PreparedStatement statement, Connection connect, ResultSet resultSet){
-        try {
-            statement = connect.prepareStatement("SELECT * FROM EmptyRooms");
-            resultSet = statement.executeQuery();
-            System.out.println("Following rooms where found: ");
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            while(resultSet.next()){
-                String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
-                        "\nCheck in date: " + resultSet.getString("Start_Date") +
-                        "\nCheck out date: " + resultSet.getString("End_Date") +
-                        "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
-                        "\nHotel name: "+ resultSet.getString("Hotel_Name") +
-                        "\nCity: "+ resultSet.getString("City")+
-                        "\nAlternative: "+ resultSet.getString("Extras_Alt")+
-                        "\nTotal price: "+ resultSet.getString("Price"));
-                System.out.println(query);
-                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            }
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
 
     public void allBookedRooms(PreparedStatement statement, Connection connect, ResultSet resultSet){
         try {
@@ -257,31 +148,6 @@ public class Booking {
 
     }
 
-    public void emptyRoomsWithoutExtras(PreparedStatement statement, Connection connect, ResultSet resultSet){
-        try {
-            statement = connect.prepareStatement("SELECT * FROM EmptyRoomsWithoutExtras");
-            resultSet = statement.executeQuery();
-            System.out.println("Following rooms where found: ");
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            while(resultSet.next()){
-                String query = "Booking ID: " + (resultSet.getInt("Booking_Id") +
-                        "\nCheck in date: " + resultSet.getString("Start_Date") +
-                        "\nCheck out date: " + resultSet.getString("End_Date") +
-                        "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
-                        "\nHotel name: "+ resultSet.getString("Hotel_Name") +
-                        "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price")+
-                        "\nAlternative: "+ resultSet.getString("Extras_Alt")
-                        +"\nExtra Price: "+ resultSet.getInt("Extra_Price"));
-                System.out.println(query);
-                System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-            }
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
     public void availableRoomsGothenburg(PreparedStatement statement, Connection connect, ResultSet resultSet){
         try {
             statement = connect.prepareStatement("SELECT * FROM EmptyRoomsGothenburg");
@@ -295,7 +161,8 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price"));
+                        "\nRoom price: "+ resultSet.getString("Bed_Price") +
+                         "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
@@ -319,7 +186,9 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price"));
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")
+                        +
+                        "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
@@ -343,7 +212,8 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price"));
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")+
+                        "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
@@ -367,7 +237,9 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price"));
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")
+                        +
+                        "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
@@ -390,7 +262,8 @@ public class Booking {
                         "\nHotel room: "+ resultSet.getInt("Hotel_Rooms_Id")+
                         "\nHotel name: "+ resultSet.getString("Hotel_Name") +
                         "\nCity: "+ resultSet.getString("City")+
-                        "\nRoom price: "+ resultSet.getString("Bed_Price"));
+                        "\nRoom price: "+ resultSet.getString("Bed_Price")
+                        + "\nBed type: "+ resultSet.getString("Bed_Name"));
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             }
@@ -400,6 +273,51 @@ public class Booking {
         }
 
     }
+
+    public void addOrEditFullBoard(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+        int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
+        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+
+        statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
+        statement.setInt(1, extrasId);
+        statement.setInt(2, hotelRoomsId);
+        statement.executeUpdate();
+
+    }
+
+    public void addOrEditHalfBoard(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+        int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
+        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+
+        statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
+        statement.setInt(1, extrasId);
+        statement.setInt(2, hotelRoomsId);
+        statement.executeUpdate();
+
+    }
+
+    public void addOrEditExtraBed(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+        int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
+        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+
+        statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
+        statement.setInt(1, extrasId);
+        statement.setInt(2, hotelRoomsId);
+        statement.executeUpdate();
+
+    }
+
+    public void addOrEditNone(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
+        int hotelRoomsId = Dialog.dialog("Please type in your hotel room number: ");
+        int extrasId = Dialog.dialog("Please type in your customer ID: ");
+
+        statement = connect.prepareStatement("UPDATE Hotel_Rooms SET Extras_Id = ? WHERE Hotel_Rooms_Id = ?");
+        statement.setInt(1, extrasId);
+        statement.setInt(2, hotelRoomsId);
+        statement.executeUpdate();
+
+    }
+
 
     //göra bokningar
     // & ta bort bokningar

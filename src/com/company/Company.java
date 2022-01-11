@@ -8,12 +8,9 @@ import java.sql.SQLException;
 public class Company {
     String firstName;
     String lastName;
-    int companyId;
     String email;
     String phoneNumber;
     String birthDate;
-    int customerId;
-
 
     public void addCompany(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException { // lägg till customer menu
         int customerId = Dialog.dialog("Please type in customer ID you would like to add company to:");
@@ -22,11 +19,11 @@ public class Company {
 
         for(int i = 0; i < companyAmount; i++) {
 
-            String firstName = Dialog.dialogString("Please write your first name:");
-            String lastName = Dialog.dialogString("Please write your last name: ");
-            String email = Dialog.dialogString("Please write your email: ");
-            String phoneNumber = Dialog.dialogString("Please write your phone number: ");
-            String birthDate = Dialog.dialogString("Please write your birthyear: ");
+            String firstName = Dialog.dialogString("Please type in your company's first name:");
+            String lastName = Dialog.dialogString("Please type in your company's last name: ");
+            String email = Dialog.dialogString("Please type in your company's email: ");
+            String phoneNumber = Dialog.dialogString("Please type in your company's phone number: ");
+            String birthDate = Dialog.dialogString("Please type in your company's birthyear: ");
 
             statement = connect.prepareStatement("INSERT INTO Company( First_Name, Last_Name, Email, Phone_Number, Birth_Date, Customer_Id ) VALUES(?, ?, ?, ?, ?, ?)");
             statement.setString(1, firstName);
@@ -107,15 +104,19 @@ public class Company {
     }
 
     public void removeCompany(PreparedStatement statement, Connection connect, ResultSet resultSet){
-        int companyIdChoice = Dialog.dialog("Please choose a company ID: ");
-        try {
-            statement = connect.prepareStatement("DELETE FROM Company WHERE Company_Id = ?");
-            statement.setInt(1, companyIdChoice);
-            statement.executeUpdate();
-            System.out.println(" Company " + companyIdChoice + " was successfully removed.");
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
+
+        int companyAmount = Dialog.dialog("How many companies would you like to remove ?");
+
+        for(int i = 0; i < companyAmount; i++) {
+            int companyIdChoice = Dialog.dialog("Please choose a company ID: ");
+            try {
+                statement = connect.prepareStatement("DELETE FROM Company WHERE Company_Id = ?");
+                statement.setInt(1, companyIdChoice);
+                statement.executeUpdate();
+                System.out.println("Company " + companyIdChoice + " was successfully removed.");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
 
     }

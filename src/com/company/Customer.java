@@ -15,32 +15,29 @@ public class Customer {
         birthDate = Dialog.dialogString("Please write your birth year: ");
         email = Dialog.dialogString("Please write your email: ");
         phoneNumber = Dialog.dialogString("Please write your phone number: ");
-        creditcard = Dialog.dialogString("Please write your creditcard number: ");
         creditcardType = Dialog.dialogString("Please write your creditcard type: ");
 
         try {
-            statement = connect.prepareStatement("INSERT INTO Customer(First_Name, Last_Name, Birth_Date, Email, Phone_Number, Creditcard, Creditcard_Type)VALUES(?, ?, ?, ?, ?, ?, ?)");
+            statement = connect.prepareStatement("INSERT INTO Customer(First_Name, Last_Name, Birth_Date, Email, Phone_Number, Creditcard_Type)VALUES(?, ?, ?, ?, ?, ?)");
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, birthDate);
             statement.setString(4, email);
             statement.setString(5, phoneNumber);
-            statement.setString(6, creditcard);
-            statement.setString(7, creditcardType);
+            statement.setString(6, creditcardType);
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
-            statement = connect.prepareStatement("SELECT * FROM Customer WHERE First_Name = ? AND Last_Name = ? AND Birth_Date = ? AND Email = ? AND Phone_Number = ? AND Creditcard = ? AND Creditcard_Type = ?");
+            statement = connect.prepareStatement("SELECT * FROM Customer WHERE First_Name = ? AND Last_Name = ? AND Birth_Date = ? AND Email = ? AND Phone_Number = ? AND Creditcard_Type = ?");
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, birthDate);
             statement.setString(4, email);
             statement.setString(5, phoneNumber);
-            statement.setString(6, creditcard);
-            statement.setString(7, creditcardType);
+            statement.setString(6, creditcardType);
             resultSet = statement.executeQuery();
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
 
@@ -50,6 +47,7 @@ public class Customer {
                                 "\nLast Name: " + " " + resultSet.getString("Last_Name") +
                                 "\nBirth year: " + " " + resultSet.getString("Birth_Date") +
                                 "\nPhone Number: " + " " + resultSet.getString("Phone_Number") +
+                                "\nCredit card type: " + " " + resultSet.getString("Creditcard_Type") +
                                 "\nCustomer ID: " + " " + resultSet.getInt("Customer_Id");
                 System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
@@ -64,25 +62,23 @@ public class Customer {
         int customerId = Dialog.dialog("Please select a customer ID: ");
         System.out.println("You chose" + " "+ customerId);
 
-        System.out.println("Update following information please:");
+        System.out.println("Please update following information:");
 
         firstName = Dialog.dialogString("Please write your first name:");
         lastName = Dialog.dialogString("Please write your last name: ");
         birthDate = Dialog.dialogString("Please write your birth year: ");
         email = Dialog.dialogString("Please write your email: ");
         phoneNumber = Dialog.dialogString("Please write your phone number: ");
-        creditcard = Dialog.dialogString("Please write your creditcard number: ");
         creditcardType = Dialog.dialogString("Please write your creditcard type: ");
         try {
-            statement = connect.prepareStatement("UPDATE Customer SET First_Name = ?, Last_Name = ?, Birth_Date = ? , Email = ? , Phone_Number = ?, Creditcard = ?, Creditcard_Type = ? WHERE Customer_Id = ? " );
+            statement = connect.prepareStatement("UPDATE Customer SET First_Name = ?, Last_Name = ?, Birth_Date = ? , Email = ? , Phone_Number = ?, Creditcard_Type = ? WHERE Customer_Id = ? " );
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, birthDate);
             statement.setString(4, email);
             statement.setString(5, phoneNumber);
-            statement.setString(6, creditcard);
-            statement.setString(7, creditcardType);
-            statement.setInt(8,customerId);
+            statement.setString(6, creditcardType);
+            statement.setInt(7,customerId);
             statement.executeUpdate();
 
         }
@@ -122,8 +118,8 @@ public class Customer {
     }
 
     public void searchCustomer(PreparedStatement statement, Connection connect, ResultSet resultSet){
-        String customerFirstName = Dialog.dialogString("Please write the Customer's first name: ");
-        String customerLastName = Dialog.dialogString("Please write the Customer's last name: ");
+        String customerFirstName = Dialog.dialogString("Please write the customer's first name: ");
+        String customerLastName = Dialog.dialogString("Please write the customer's last name: ");
         try {
             statement = connect.prepareStatement("SELECT * FROM Customer WHERE First_Name = ? AND Last_Name = ?");
             statement.setString(1,customerFirstName);
@@ -133,8 +129,7 @@ public class Customer {
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
             while(resultSet.next()){
             String query = ("First name: " + customerFirstName +
-                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date") + "\nCredit card: "
-                    + resultSet.getString("Creditcard") + ", " + resultSet.getString("Creditcard_Type") +
+                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date")+ ", " + resultSet.getString("Creditcard_Type") +
                     "\nCustomer ID: " + resultSet.getString("Customer_Id"));
             System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
