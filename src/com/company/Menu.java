@@ -72,12 +72,14 @@ public class Menu {
                 "\n (3) Update company information.  " +
                 "\n (4) Add Company. " +
                 "\n (5) Remove customer." +
-                "\n (6) Search for a customer.  " +
-                "\n (7) Search for company.  " +
-                "\n (8) Back to main menu. " +
+                "\n (6) Remove company." +
+                "\n (7) Search for a customer.  " +
+                "\n (8) Search for company.  " +
+                "\n (9) Back to main menu. " +
                 "\n╚══════════════════════════════════════════╝");
         customerMenuChoice(statement, connect, resultSet);
     }
+
 
     public void customerMenuChoice(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         Scanner input = new Scanner(System.in);
@@ -149,8 +151,12 @@ public class Menu {
                     customerMenu(statement, connect, resultSet);
                 }
                 break;
-
             case "5":
+                customer.searchCustomer(statement,connect,resultSet);
+                company.deleteCompany(statement,connect,resultSet);
+                customerMenu(statement,connect,resultSet);
+
+            case "6":
                 System.out.println("YOU CHOSE TO REMOVE A CUSTOMER.  ");
                 customer.searchCustomer(statement, connect, resultSet);
                 int choice8 = Dialog.dialog("Are there any customers displayed?" +
@@ -162,13 +168,13 @@ public class Menu {
                     customerMenu(statement, connect, resultSet);
                 }
                 break;
-            case "6":
+            case "7":
                 System.out.println("YOU CHOSE TO SEARCH FOR A CUSTOMER.  ");
                 customer.searchCustomer(statement, connect, resultSet); // söker efter kund
                 customerMenu(statement, connect, resultSet);
                 break;
 
-            case "7":
+            case "8":
                 System.out.println("YOU CHOSE TO SEARCH FOR COMPANY.  ");
                 System.out.println("Please fill in the following information:");
                 customer.searchCustomer(statement, connect, resultSet);
@@ -183,7 +189,7 @@ public class Menu {
                 }
                 break;
 
-            case "8":
+            case "9":
                 System.out.println("Taking you back to main menu...");
                 mainMenu(statement, connect, resultSet);
                 break;

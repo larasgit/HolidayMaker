@@ -12,7 +12,7 @@ public class Company {
     String phoneNumber;
     String birthDate;
 
-    public void addCompany(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException { // lägg till customer menu
+    public void addCompany(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         int customerId = Dialog.dialog("Please type in customer ID you would like to add company to:");
 
         int companyAmount = Dialog.dialog("How many people would you like to add as company?");
@@ -32,6 +32,17 @@ public class Company {
             statement.setString(4, phoneNumber);
             statement.setString(5, birthDate);
             statement.setInt(6, customerId);
+            statement.executeUpdate();
+        }
+    }
+
+    public void deleteCompany(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException { // lägg till customer menu
+        int companyAmount = Dialog.dialog("How many companies do you want to delete?");
+        for(int i = 0; i < companyAmount; i++) {
+            int companyId = Dialog.dialog("Please type in the company ID you want to delete:");
+
+            statement = connect.prepareStatement("DELETE FROM Company WHERE Company_Id =?");
+            statement.setInt(1, companyId);
             statement.executeUpdate();
         }
     }
