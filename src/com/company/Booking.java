@@ -75,20 +75,6 @@ public class Booking {
 
     }
 
-    /*public void editBooking(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        int bookingId = Dialog.dialog("Please type in your booking ID: ");
-        int customerId = Dialog.dialog("Please type in your customer ID: ");
-        String startDate = Dialog.dialogString("Please update the start date of your reservation (YYYY-MM-DD): ");
-        String endDate = Dialog.dialogString("Please update the end date of your reservation (YYYY-MM-DD): ");
-
-        statement = connect.prepareStatement("UPDATE Booking SET Customer_Id = ?, Start_Date = ?, End_Date = ? WHERE Booking_Id = ?");
-        statement.setInt(1, customerId);
-        statement.setString(2, startDate);
-        statement.setString(3, endDate);
-        statement.setInt(4, bookingId);
-        statement.executeUpdate();
-
-    }*/
 
     public void removeBooking(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         int bookingId = Dialog.dialog("Please type in the booking ID for the reservation you want to delete: ");

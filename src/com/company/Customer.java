@@ -3,7 +3,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.*;
-import java.util.Scanner;
 
 public class Customer {
     String firstName, lastName, birthDate, email,phoneNumber,creditcard,creditcardType;
@@ -85,22 +84,6 @@ public class Customer {
         }
         catch (Exception e ){
             e.printStackTrace();
-        }
-
-    }
-    public void viewAllCustomers(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        statement = connect.prepareStatement("SELECT * FROM Customer;");
-        resultSet = statement.executeQuery();
-        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-        while (resultSet.next()) {
-            String query =
-                    "First Name: " + " " + resultSet.getString("First_Name") +
-                            "\nLast Name: " + " " + resultSet.getString("Last_Name") +
-                    "\nBirth year: " + " " + resultSet.getString("Birth_Date")+
-                            "\nPhone Number: " + " " + resultSet.getString("Phone_Number") +
-                    "\nCustomer ID: " + " " + resultSet.getInt("Customer_Id");
-                    System.out.println(query);
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
         }
 
     }
