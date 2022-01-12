@@ -288,9 +288,8 @@ public class Menu {
 
 
     public void newCustomerReservationMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        System.out.println("Reservation menu:");
         System.out.println("       ┌──────────    ───────────┐" +
-                "\n              RESERVATION MENU " +
+                "\n            RESERVATION MENU " +
 
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
@@ -516,17 +515,17 @@ public class Menu {
 
     public void cityMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         System.out.println("       ┌──────────    ───────────┐" +
-                "\n              CITY RESERVATION MENU " +
+                "\n         CITY RESERVATION MENU " +
 
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
         System.out.println("╔══════════════════════════════════════════╗" +
-                " (1) Make reservation in Gothenburg. " +
+                "\n(1) Make reservation in Gothenburg. " +
                 "\n(2) Make Reservation in Stockholm. " +
                 "\n(3) Make Reservation in Luleå. " +
-                "\n(4)  Make Reservation in Malmö. " +
-                "\n(5)  Make Reservation in Skövde. " +
-                "\n(6)  Go back to reservation menu. " +
+                "\n(4) Make Reservation in Malmö. " +
+                "\n(5) Make Reservation in Skövde. " +
+                "\n(6) Go back to reservation menu. " +
                 "\n╚══════════════════════════════════════════╝");
         cityMenuChoice(statement, connect, resultSet);
     }
@@ -712,7 +711,7 @@ public class Menu {
 
     public void existingCustomerMenu(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         System.out.println("       ┌──────────    ───────────┐" +
-                "\n              RESERVATION MENU " +
+                "\n            RESERVATION MENU " +
 
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");

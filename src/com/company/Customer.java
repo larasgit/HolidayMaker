@@ -39,6 +39,7 @@ public class Customer {
             statement.setString(5, phoneNumber);
             statement.setString(6, creditcardType);
             resultSet = statement.executeQuery();
+            System.out.println("Customer was added successfully!");
             System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
 
             while (resultSet.next()) {
@@ -131,7 +132,8 @@ public class Customer {
             while(resultSet.next()){
 
             String query = ("First name: " + customerFirstName +
-                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date")+ ", " + resultSet.getString("Creditcard_Type") +
+                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date")+ ", " +
+                    "\nCredit card type: " + resultSet.getString("Creditcard_Type") +
                     "\nCustomer ID: " + resultSet.getString("Customer_Id"));
             System.out.println(query);
                 System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
