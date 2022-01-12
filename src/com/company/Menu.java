@@ -310,9 +310,17 @@ public class Menu {
             case "3":
                 System.out.println("YOU CHOSE TO REMOVE A RESERVATION");
                 booking.searchBookings(statement, connect, resultSet);
-                booking.removeBooking(statement, connect, resultSet);
-                System.out.println("Reservation deleted successfully.");
-                bookingMenu(statement, connect, resultSet); // gå tillbaka till booking menu
+                int reschoice = Dialog.dialog("Are there any reservations displayed? " +
+                        "\n(1) Yes. (2) No. ",1,2);
+                if(reschoice==1) {
+                    booking.removeBooking(statement, connect, resultSet);
+                    System.out.println("Reservation deleted successfully.");
+                    bookingMenu(statement, connect, resultSet);
+                }
+                if(reschoice==2){
+                    System.out.println("You can't delete a reservation that doesn't exist.");
+                    bookingMenu(statement,connect,resultSet);
+                }
                 break;
 
             case "4":
