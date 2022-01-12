@@ -232,7 +232,7 @@ public class Menu {
                 if (choice4 == 1) {
                     booking.editBooking(statement, connect, resultSet);
                     int choice5 = Dialog.dialog("Please select one of the following extras:" +
-                            "(1)\nFull board: Breakfast, lunch and dinner. (1000kr)" +
+                            "\n(1)Full board: Breakfast, lunch and dinner. (1000kr)" +
                             "\n(2) Half board: Breakfast and lunch. (750kr)" +
                             "\n(3) Extra bed: (150kr)." +
                             "\n(4) None. ", 1, 4);
@@ -735,35 +735,43 @@ public class Menu {
         switch (option) {
             case "1":
                 customer.searchCustomer(statement, connect, resultSet); //create a new customer
-                booking.availableRooms(statement, connect, resultSet);
-                System.out.println("Fill in following information to book a room:");
-                booking.createBooking(statement, connect, resultSet);
-                int choice19 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice30 = Dialog.dialog("Is a customer found?" +
+                        "\n(1) Yes. (2) No.", 1, 2);
+                if(choice30 == 1){
+                    booking.availableRooms(statement, connect, resultSet);
+                    System.out.println("Fill in following information to book a room:");
+                    booking.createBooking(statement, connect, resultSet);
+                    int choice19 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice19 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice19 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice19 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice19 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice19 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if(choice30 == 2){
+                        existingCustomerMenu(statement,connect,resultSet);
+                    }
                 }
-                if (choice19 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice19 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice19 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
+
                 break;
 
             case "2":
@@ -771,165 +779,195 @@ public class Menu {
                 break;
             case "3":
                 customer.searchCustomer(statement, connect, resultSet); //create a new customer
-                hotel.hotelBasedOnReviews(statement, connect, resultSet);
-                System.out.println("Fill in following information to book a room:");
-                booking.createBooking(statement, connect, resultSet);
-                int choice20 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice31 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice31 == 1) {
+                    hotel.hotelBasedOnReviews(statement, connect, resultSet);
+                    System.out.println("Fill in following information to book a room:");
+                    booking.createBooking(statement, connect, resultSet);
+                    int choice20 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice20 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice20 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice20 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice20 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice20 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice20 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice20 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice20 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice31 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
             case "4":
                 customer.searchCustomer(statement, connect, resultSet);
-                hotel.hotelBasedOnPrice(statement, connect, resultSet);
-                System.out.println("Fill in following information to book a room:");
-                booking.createBooking(statement, connect, resultSet);
-                int choice21 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice32 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice32 == 1) {
+                    hotel.hotelBasedOnPrice(statement, connect, resultSet);
+                    System.out.println("Fill in following information to book a room:");
+                    booking.createBooking(statement, connect, resultSet);
+                    int choice21 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice21 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice21 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice21 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice21 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice21 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice21 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice21 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice21 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice32 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
 
             case "5":
                 customer.searchCustomer(statement, connect, resultSet);
-                hotel.hotelCloseToCity(statement, connect, resultSet);
-                System.out.println("Fill in following information to book a room:");
-                booking.createBooking(statement, connect, resultSet);
-                int choice22 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice33 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice33 == 1) {
+                    hotel.hotelCloseToCity(statement, connect, resultSet);
+                    System.out.println("Fill in following information to book a room:");
+                    booking.createBooking(statement, connect, resultSet);
+                    int choice22 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice22 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice22 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice22 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice22 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice22 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice22 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice22 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice22 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice33 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
 
             case "6":
                 customer.searchCustomer(statement, connect, resultSet);
-                hotel.hotelCloseToBeach(statement, connect, resultSet);
-                System.out.println("Fill in following information to book a room:");
-                booking.createBooking(statement, connect, resultSet);
-                int choice23 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice34 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice34 == 1) {
+                    hotel.hotelCloseToBeach(statement, connect, resultSet);
+                    System.out.println("Fill in following information to book a room:");
+                    booking.createBooking(statement, connect, resultSet);
+                    int choice23 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice23 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice23 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice23 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice23 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice23 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice23 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice23 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice23 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice34 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
 
             case "7":
                 customer.searchCustomer(statement, connect, resultSet);
-                hotel.hotelBasedOnActivity(statement, connect, resultSet);
-                System.out.println("Fill in following information to book a room:");
-                booking.createBooking(statement, connect, resultSet);
-                int choice24 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice35 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice35 == 1) {
+                    hotel.hotelBasedOnActivity(statement, connect, resultSet);
+                    System.out.println("Fill in following information to book a room:");
+                    booking.createBooking(statement, connect, resultSet);
+                    int choice24 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice24 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice24 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice24 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice24 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice24 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice24 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice24 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice24 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice35 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
             case "8":
@@ -943,7 +981,7 @@ public class Menu {
 
     public void cityMenu2(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
         System.out.println("       ┌──────────    ───────────┐" +
-                "\n              CITY RESERVATION MENU " +
+                "\n          CITY RESERVATION MENU " +
 
                 "\n       └──────────    ───────────┘");
         System.out.println("         PLEASE SELECT AN OPTION");
@@ -951,9 +989,9 @@ public class Menu {
                 "\n(1) Make reservation in Gothenburg. " +
                 "\n(2) Make Reservation in Stockholm. " +
                 "\n(3) Make Reservation in Luleå. " +
-                "\n(4)  Make Reservation in Malmö. " +
-                "\n(5)  Make Reservation in Skövde. " +
-                "\n(6)  Go back to reservation menu. " +
+                "\n(4) Make Reservation in Malmö. " +
+                "\n(5) Make Reservation in Skövde. " +
+                "\n(6) Go back to reservation menu. " +
                 "\n╚══════════════════════════════════════════╝");
         cityMenuChoice2(statement, connect, resultSet);
     }
@@ -966,165 +1004,195 @@ public class Menu {
             case "1":
                 System.out.println("Fill in following information to book a room:");
                 customer.searchCustomer(statement, connect, resultSet);
-                booking.availableRoomsGothenburg(statement, connect, resultSet);
-                booking.createBooking(statement, connect, resultSet); //skapa bokning
-                int choice18 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice31 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice31 == 1) {
+                    booking.availableRoomsGothenburg(statement, connect, resultSet);
+                    booking.createBooking(statement, connect, resultSet); //skapa bokning
+                    int choice18 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice18 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice18 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice18 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice18 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice18 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice18 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice18 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice18 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice31 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
 
             case "2":
                 System.out.println("Fill in following information to book a room:");
                 customer.searchCustomer(statement, connect, resultSet);
-                booking.availableRoomsStockholm(statement, connect, resultSet);
-                booking.createBooking(statement, connect, resultSet); //skapa bokning
-                int choice19 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice32 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice32 == 1) {
+                    booking.availableRoomsStockholm(statement, connect, resultSet);
+                    booking.createBooking(statement, connect, resultSet); //skapa bokning
+                    int choice19 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice19 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice19 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice19 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice19 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice19 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice19 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice19 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice19 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice32 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
 
             case "3":
                 System.out.println("Fill in following information to book a room:");
                 customer.searchCustomer(statement, connect, resultSet);
-                booking.availableRoomsLulea(statement, connect, resultSet);
-                booking.createBooking(statement, connect, resultSet); //skapa bokning
-                int choice20 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice33 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice33 == 1) {
+                    booking.availableRoomsLulea(statement, connect, resultSet);
+                    booking.createBooking(statement, connect, resultSet); //skapa bokning
+                    int choice20 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice20 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice20 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice20 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice20 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice20 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice20 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice20 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice20 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice33 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
 
             case "4":
                 System.out.println("Fill in following information to book a room:");
                 customer.searchCustomer(statement, connect, resultSet);
-                booking.availableRoomsMalmo(statement, connect, resultSet);
-                booking.createBooking(statement, connect, resultSet); //skapa bokning
-                int choice21 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice34 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice34 == 1) {
+                    booking.availableRoomsMalmo(statement, connect, resultSet);
+                    booking.createBooking(statement, connect, resultSet); //skapa bokning
+                    int choice21 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice21 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice21 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice21 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice21 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice21 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice21 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice21 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice21 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice34 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
 
             case "5":
                 System.out.println("Fill in following information to book a room:");
                 customer.searchCustomer(statement, connect, resultSet);
-                booking.availableRoomsSkovde(statement, connect, resultSet);
-                booking.createBooking(statement, connect, resultSet); //skapa bokning
-                int choice22 = Dialog.dialog("Please select one of the following additions:" +
-                        "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
-                        "\n(2) Half board: breakfast and lunch (750kr) " +
-                        "\n(3) Extra bed (150kr)" +
-                        "\n(4) No addition.  ", 1, 4);
+                int choice35 = Dialog.dialog("Is a customer found?\n (1) Yes. (2). No.", 1, 2);
+                if(choice35 == 1) {
+                    booking.availableRoomsSkovde(statement, connect, resultSet);
+                    booking.createBooking(statement, connect, resultSet); //skapa bokning
+                    int choice22 = Dialog.dialog("Please select one of the following additions:" +
+                            "\n(1) Full board: breakfast, lunch, dinner (1000kr)   " +
+                            "\n(2) Half board: breakfast and lunch (750kr) " +
+                            "\n(3) Extra bed (150kr)" +
+                            "\n(4) No addition.  ", 1, 4);
 
-                if (choice22 == 1) {
-                    booking.addOrEditFullBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice22 == 2) {
-                    booking.addOrEditHalfBoard(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice22 == 3) {
-                    booking.addOrEditExtraBed(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
-                }
-                if (choice22 == 4) {
-                    booking.addOrEditNone(statement, connect, resultSet);
-                    System.out.println("Reservation was made successfully.");
-                    existingCustomerMenu(statement, connect, resultSet);
+                    if (choice22 == 1) {
+                        booking.addOrEditFullBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice22 == 2) {
+                        booking.addOrEditHalfBoard(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice22 == 3) {
+                        booking.addOrEditExtraBed(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice22 == 4) {
+                        booking.addOrEditNone(statement, connect, resultSet);
+                        System.out.println("Reservation was made successfully.");
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
+                    if (choice35 == 2) {
+                        existingCustomerMenu(statement, connect, resultSet);
+                    }
                 }
                 break;
             case "6":

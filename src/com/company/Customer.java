@@ -72,7 +72,7 @@ public class Customer {
         phoneNumber = Dialog.dialogString("Please write your phone number: ");
         creditcardType = Dialog.dialogString("Please write your creditcard type: ");
         try {
-            statement = connect.prepareStatement("UPDATE Customer SET First_Name = ?, Last_Name = ?, Birth_Date = ? , Email = ? , Phone_Number = ?, Creditcard_Type = ? WHERE Customer_Id = ? " );
+            statement = connect.prepareStatement("UPDATE Customer SET First_Name = ?, Last_Name = ?, Birth_Date = ?, Email = ?, Phone_Number = ?, Creditcard_Type = ? WHERE Customer_Id = ? " );
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, birthDate);
