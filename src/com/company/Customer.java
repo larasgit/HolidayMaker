@@ -89,7 +89,7 @@ public class Customer {
     }
 
     public void removeCustomer(PreparedStatement statement, Connection connect, ResultSet resultSet){  // inte klar
-         int customerIdChoice = Dialog.dialog("Please choose a customer ID: ");
+         int customerIdChoice = Dialog.dialog("Please select a customer ID you would like to remove: ");
         try {
             statement = connect.prepareStatement("DELETE FROM Customer WHERE Customer_Id = ?");
             statement.setInt(1, customerIdChoice);
@@ -115,7 +115,7 @@ public class Customer {
             while(resultSet.next()){
 
             String query = ("First name: " + customerFirstName +
-                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date")+ ", " +
+                        "\nLast Name: " + customerLastName + "\nBirth year: " + resultSet.getString("Birth_Date") +
                     "\nCredit card type: " + resultSet.getString("Creditcard_Type") +
                     "\nCustomer ID: " + resultSet.getString("Customer_Id"));
             System.out.println(query);

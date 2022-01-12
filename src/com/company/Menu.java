@@ -98,8 +98,9 @@ public class Menu {
                     System.out.println("Customer and company successfully added.");
                     customerMenu(statement, connect, resultSet);
                 }
-                    if (choice1 == 2) {
-                    customerMenu(statement, connect, resultSet);}
+                if (choice1 == 2) {
+                    customerMenu(statement, connect, resultSet);
+                }
 
                 break;
             case "2":
@@ -115,7 +116,7 @@ public class Menu {
                     System.out.println("Customer information is now updated.");
                     customerMenu(statement, connect, resultSet);
                 }
-                    if (choice5 == 2){
+                if (choice5 == 2) {
                     customerMenu(statement, connect, resultSet);
                 }
 
@@ -128,10 +129,20 @@ public class Menu {
                         "\n (1) Yes.   (2) No. ", 1, 2);
                 if (choice6 == 1) {
                     company.findCompany(statement, connect, resultSet);
-                    company.editCompanyInformation(statement, connect, resultSet);
-                    System.out.println("Company information updated successfully.");
-                    customerMenu(statement, connect, resultSet);
-                } if (choice6 == 2) {
+                    int choice7 = Dialog.dialog("Are there any customers displayed?" +
+                            "\n (1) Yes.   (2) No. ", 1, 2);
+                    if (choice7 == 1) {
+                        company.editCompanyInformation(statement, connect, resultSet);
+                        System.out.println("Company information updated successfully.");
+                        customerMenu(statement, connect, resultSet);
+                    }
+                    if (choice7 == 2) {
+                        System.out.println("You can't edit information to a company that doesn't exist.");
+                    }
+
+                }
+                if (choice6 == 2) {
+                    System.out.println("You can't edit company information to a customer that doesn't exist. ");
                     customerMenu(statement, connect, resultSet);
                 }
                 break;
@@ -147,24 +158,49 @@ public class Menu {
                     company.addCompany(statement, connect, resultSet);
                     System.out.println("Company added successfully!");
                     customerMenu(statement, connect, resultSet);
-                } if (choice7 == 2){
+                }
+                if (choice7 == 2) {
+                    System.out.println("You can't add company to a customer that doesn't exist.");
                     customerMenu(statement, connect, resultSet);
                 }
                 break;
             case "5":
-                customer.searchCustomer(statement,connect,resultSet);
-                company.deleteCompany(statement,connect,resultSet);
-                customerMenu(statement,connect,resultSet);
-
-            case "6":
                 System.out.println("YOU CHOSE TO REMOVE A CUSTOMER.  ");
-                customer.searchCustomer(statement, connect, resultSet);
-                int choice8 = Dialog.dialog("Are there any customers displayed?" +
-                        "\n (1) Yes.   (2) No. ", 1, 2);
-                if (choice8 == 1) {
-                    customer.removeCustomer(statement, connect, resultSet);
+                int cuschoice = Dialog.dialog("OBS! To delete a customer you must delete their company as well." +
+                        "\n Would you like to do that?" +
+                        "\n(1) Yes. (2) No.");
+                if (cuschoice == 1) {
+                    customer.searchCustomer(statement, connect, resultSet);
+                    int choice8 = Dialog.dialog("Are there any customers displayed?" +
+                            "\n(1) Yes.  (2) No. ", 1, 2);
+                    if (choice8 == 1) {
+                        company.findCompany(statement,connect,resultSet);
+                        customer.removeCustomer(statement, connect, resultSet);
+                    }
+                if (choice8 == 2) {
+                    System.out.println("You can't delete a customer that doesn't exist.");
                     customerMenu(statement, connect, resultSet);
-                } if (choice8 == 2) {
+                }
+                if(cuschoice==2){
+                    System.out.println("Taking you back to customer menu..");
+                    customerMenu(statement,connect,resultSet);
+                }
+               }
+            case "6":
+                System.out.println("YOU CHOSE TO REMOVE A COMPANY.  ");
+                customer.searchCustomer(statement, connect, resultSet);
+                int choice9 = Dialog.dialog("Are there any customers displayed?" +
+                        "\n (1) Yes.   (2) No. ", 1, 2);
+                if (choice9 == 1) {
+                    company.findCompany(statement,connect,resultSet);
+                    int choice10 = Dialog.dialog("Does this customer have any company?" +
+                            "\n (1) Yes.   (2) No. ", 1, 2);
+                    if(choice10==1){
+                        company.deleteCompany(statement,connect,resultSet);
+                        customerMenu(statement,connect,resultSet);
+                    }
+                } if (choice9 == 2) {
+                System.out.println("You can't delete company if a customer doesn't exist.");
                     customerMenu(statement, connect, resultSet);
                 }
                 break;

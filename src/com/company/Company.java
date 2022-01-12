@@ -44,6 +44,7 @@ public class Company {
             statement = connect.prepareStatement("DELETE FROM Company WHERE Company_Id =?");
             statement.setInt(1, companyId);
             statement.executeUpdate();
+            System.out.println("Company was successfully deleted");
         }
     }
 
