@@ -67,21 +67,6 @@ public class Company {
 
     }
 
-    /*public void viewAllCompany(PreparedStatement statement, Connection connect, ResultSet resultSet) throws SQLException {
-        statement = connect.prepareStatement("SELECT * FROM Company");
-        resultSet = statement.executeQuery();
-        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-        while (resultSet.next()) {
-            String query = "First Name: " + " " + resultSet.getString("First_Name") +
-                    "\nLast Name: " + " " + resultSet.getString("Last_Name") +
-                   "\nBirth year: " + " " + resultSet.getString("Birth_Date")+
-                    "\nPhone Number: " + " " + resultSet.getString("Phone_Number") +
-                    " \nCompany ID: " + " " + resultSet.getInt("Company_Id");
-            System.out.println(query);
-            System.out.println("══════════════════════════════════════════════════════════════════════════════════════════ ");
-        }
-    }*/
-
     public void editCompanyInformation(PreparedStatement statement, Connection connect, ResultSet resultSet){
         int companyId = Dialog.dialog("Please select a company ID: ");
         System.out.println("You chose Company ID: " + companyId);
@@ -108,24 +93,5 @@ public class Company {
         }
 
     }
-
-    /*public void removeCompany(PreparedStatement statement, Connection connect, ResultSet resultSet){
-
-        int companyAmount = Dialog.dialog("How many companies would you like to remove ?");
-
-        for(int i = 0; i < companyAmount; i++) {
-            int companyIdChoice = Dialog.dialog("Please choose a company ID: ");
-            try {
-                statement = connect.prepareStatement("DELETE FROM Company WHERE Company_Id = ?");
-                statement.setInt(1, companyIdChoice);
-                statement.executeUpdate();
-                System.out.println("Company " + companyIdChoice + " was successfully removed.");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-
-    }*/
-
 
 }
